@@ -58,8 +58,19 @@
     );
     $namaTestimonial = "Richard Johnson";
     $lokasiTestimonial = "Bandung, Indonesia";
+    $footerDeskripsi = "Clarity is in the business of improving your health and wellness. We grow, farm, and bottle the finest olive products you can find.";
+
+    $judulInformation = "Information";
+    $aboutUs = "About Us";
+    $ourProduct = "Our Product";
+    $contactUs = "Contact Us";
+    $judulHelpCenter = "Help Center";
+    $privacyPolicy = "Privacy Policy";
+    $terms = "Terms & Conditions";
+    $legalSupport = "Legal Support";
     $nomorTelepon = "0361 123 4567";
     $email = "info.clarity@gmail.com";
+    $copyright = "Copyright Clarity 2021 All Right Reserved";
 
 ?>
 
@@ -111,7 +122,7 @@
             <ul class="menu">
                 <?php foreach($menus as $menu): ?>
                     <li>
-                        <a href="<?= $menu["url"] ?>">
+                        <a href="<?php echo $menu["url"] ?>">
                         <?php echo $menu["label"]; ?>
                         </a>
                         
@@ -161,19 +172,29 @@
 
                 <h1>
 
-                    <?php echo $judul1; ?>
+        <?php
+            if (!empty($judul1)) {
+            echo $judul1;
+            }
+        ?>
 
-                    <br>
+        <br>
 
-                    <?php echo $judul2; ?>
+        <?php
+            if (!empty($judul2)) {
+            echo $judul2;
+            }
+        ?>
 
-                </h1>
+        </h1>
 
-                <p>
-
-                    <?php echo $deskripsi; ?>
-
-                </p>
+        <p>
+             <?php
+                 if (!empty($deskripsi)) {
+                echo $deskripsi;
+                 }
+            ?>
+        </p>
 
                 <div class="buttons">
 
@@ -269,29 +290,33 @@
 
      <div class="target-container">
 
-        <?php foreach ($targets as $target) { ?>
+         <?php if (!empty($targets)): ?>
 
-            <div class="box <?= $target["class"] ?>">
+             <?php foreach ($targets as $target): ?>
 
-                <div class="overlay">
+                 <div class="box <?php echo $target["class"]; ?>">
 
-                    <h3>
-                        <?= $target["nama"] ?>
-                    </h3>
+                    <div class="overlay">
 
-                    <p>
-                        <?= $target["deskripsi"] ?>
-                    </p>
+                     <h3>
+                           <?php echo $target["nama"]; ?>
+                     </h3>
 
-                    <a href="#">
-                        Shop Product
-                    </a>
+                     <p>
+                            <?php echo $target["deskripsi"]; ?>
+                     </p>
+
+                     <a href="#">
+                         Shop Product
+                      </a>
+
+                    </div>
 
                 </div>
 
-             </div>
+             <?php endforeach; ?>
 
-            <?php } ?>
+        <?php endif; ?>
 
         </div>
 
@@ -313,34 +338,38 @@
 
         <div class="card-container">
 
-            <?php foreach ($chooses as $choose) { ?>
+           <?php if (!empty($chooses)): ?>
 
-                <div class="card-item">
+         <?php foreach ($chooses as $choose): ?>
+
+             <div class="card-item">
 
                     <div class="card">
 
-                        <div class="icon">
+                     <div class="icon">
 
-                            <img
-                                src="<?= $choose["gambar"] ?>"
-                                alt="<?= $choose["judul"] ?>">
+                         <img
+                                src="<?php echo $choose["gambar"]; ?>"
+                                alt="<?php echo $choose["judul"]; ?>"
+                          >
 
-                        </div>
+                         </div>
 
-                        <h4 class="mif">
-                            <?= $choose["judul"] ?>
+                         <h4 class="mif">
+                         <?php echo $choose["judul"]; ?>
                         </h4>
 
                         <p>
-                            <?= $choose["deskripsi"] ?>
+                          <?php echo $choose["deskripsi"]; ?>
                         </p>
 
-                    </div>
+                 </div>
 
-                </div>
+             </div>
 
-            <?php } ?>
+         <?php endforeach; ?>
 
+     <?php endif; ?>
         </div>
 
         </div>
@@ -465,169 +494,111 @@
 
     </section>
 
-    <footer class="footer">
-
-        <div class="container">
-
-            <div class="footer-container">
-
-                <div class="footer-about">
-
-                    <h3>
-
-                        <img
-                            class="footer-logo"
-                            src="logo/logoclaity-footer.png">
-
-                    </h3>
-
-                    <p>
-
-                        Clarity is in the business of improving your<br>
-                        health and wellness. We grow, farm, and bottle<br>
-                        the finest olive products you can find.
-
-                    </p>
-
-                </div>
-
-                <div class="footer-column">
-
-                    <h4>
-
-                        Information
-
-                    </h4>
-
-                    <a href="#">
-
-                        About Us
-
-                    </a>
-
-                    <a href="#">
-
-                        Our Product
-
-                    </a>
-
-                    <a href="#">
-
-                        Contact Us
-
-                    </a>
-
-                </div>
-
-                <div class="footer-column">
-
-                    <h4>
-
-                        Help Center
-
-                    </h4>
-
-                    <a href="#">
-
-                        Privacy Policy
-
-                    </a>
-
-                    <a href="#">
-
-                        Terms & Conditions
-
-                    </a>
-
-                    <a href="#">
-
-                        Legal Support
-
-                    </a>
-
-                </div>
-
-                <div class="footer-contact">
-
-                    <div class="contact-item">
-
-                        <span>
-
-                            <img
-                                class="teleponlogo-img"
-                                src="logo/teleponlogo.svg">
-
-                        </span>
-
-                        <p class="teleponlogo">
-
-                            <?php echo $nomorTelepon; ?>
-
-                        </p>
-
-                    </div>
-
-                    <div class="contact-item">
-
-                        <span class="lock-email">
-
-                            ✉
-
-                        </span>
-
-                        <p>
-
-                            <?php echo $email; ?>
-
-                        </p>
-
-                    </div>
-
-                    <div class="social-media">
-
-                        <a href="#">
-
-                            <img
-                                class="logomif"
-                                src="logo/instagramlogo.png">
-
-                        </a>
-
-                        <a href="#">
-
-                            <img
-                                class="logomif"
-                                src="logo/twiterlogo.svg">
-
-                        </a>
-
-                        <a href="#">
-
-                            <img
-                                class="facebocklogo"
-                                src="logo/facebocklogo.png">
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="copyright">
+   <footer class="footer">
+    <div class="container">
+
+        <div class="footer-container">
+
+            <div class="footer-about">
+                <h3>
+                    <img
+                        class="footer-logo"
+                        src="logo/logoclaity-footer.png">
+                </h3>
 
                 <p>
-
-                    Copyright Clarity 2021 All Right Reserved
-
+                    <?php echo $footerDeskripsi; ?>
                 </p>
+            </div>
+
+            <div class="footer-column">
+                <h4><?php echo $judulInformation; ?></h4>
+
+                <a href="#chooses">
+                    <?php echo $aboutUs; ?>
+                </a>
+
+                <a href="#products">
+                    <?php echo $ourProduct; ?>
+                </a>
+
+                <a href="#contact">
+                    <?php echo $contactUs; ?>
+                </a>
+            </div>
+
+            <div class="footer-column">
+                <h4><?php echo $judulHelpCenter; ?></h4>
+
+                <a href="#">
+                    <?php echo $privacyPolicy; ?>
+                </a>
+
+                <a href="#">
+                    <?php echo $terms; ?>
+                </a>
+
+                <a href="#">
+                    <?php echo $legalSupport; ?>
+                </a>
+            </div>
+
+            <div class="footer-contact">
+
+                <div class="contact-item">
+                    <span>
+                        <img
+                            class="teleponlogo-img"
+                            src="logo/teleponlogo.svg">
+                    </span>
+
+                    <p class="teleponlogo">
+                        <?php echo $nomorTelepon; ?>
+                    </p>
+                </div>
+
+                <div class="contact-item">
+                    <span class="lock-email">✉</span>
+
+                    <p>
+                        <?php echo $email; ?>
+                    </p>
+                </div>
+
+                <div class="social-media">
+
+                    <a href="#">
+                        <img
+                            class="logomif"
+                            src="logo/instagramlogo.png">
+                    </a>
+
+                    <a href="#">
+                        <img
+                            class="logomif"
+                            src="logo/twiterlogo.svg">
+                    </a>
+
+                    <a href="#">
+                        <img
+                            class="facebocklogo"
+                            src="logo/facebocklogo.png">
+                    </a>
+
+                </div>
 
             </div>
 
         </div>
 
-    </footer>
+        <div class="copyright">
+            <p>
+                <?php echo $copyright; ?>
+            </p>
+        </div>
+
+    </div>
+</footer>
 
     <script src="script.js"></script>
 
