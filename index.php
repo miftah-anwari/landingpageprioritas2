@@ -19,13 +19,34 @@
     ),
 
     );
-    $product = array(
-    "nama" => "Super Antioxidant",
-    "kapsul" => "60 capsules",
-    "harga" => "$16,00",
-    "gambar" => "image/supplement-1 1.png"
-    );
-    $jumlahProduk = 3;
+   $products = array(
+
+    array(
+        "nama" => "Super Antioxidant",
+        "kapsul" => "60 capsules",
+        "harga" => "$16,00",
+        "gambar" => "image/supplement-1 1.png",
+        "stok" => 10
+    ),
+
+    array(
+         "nama" => "Super Antioxidant",
+        "kapsul" => "60 capsules",
+        "harga" => "$16,00",
+        "gambar" => "image/supplement-1 1.png",
+        "stok" => 10
+    ),
+
+    array(
+        "nama" => "Super Antioxidant",
+        "kapsul" => "60 capsules",
+        "harga" => "$16,00",
+        "gambar" => "image/supplement-1 1.png",
+        "stok" => 10
+    )
+
+);
+
     $targets = array(
     array(
         "nama" => "Young Active People",
@@ -120,14 +141,31 @@
             </button>
 
             <ul class="menu">
-                <?php foreach($menus as $menu): ?>
-                    <li>
-                        <a href="<?php echo $menu["url"] ?>">
-                        <?php echo $menu["label"]; ?>
-                        </a>
-                        
-                    </li>
-                <?php endforeach ?>
+                <?php if (isset($menus) && !empty($menus)): ?>
+
+                     <?php foreach ($menus as $menu): ?>
+
+                 <?php
+
+             $menuLabel = isset($menu["label"]) && !empty($menu["label"])
+                 ? $menu["label"]
+                    : "Menu";
+
+             $menuUrl = isset($menu["url"]) && !empty($menu["url"])
+                 ? $menu["url"]
+                 : "#";
+
+                ?>
+
+                <li>
+                     <a href="<?php echo $menuUrl; ?>">
+                     <?php echo $menuLabel; ?>
+                    </a>
+                </li>
+
+        <?php endforeach; ?>
+
+        <?php endif; ?>
             </ul>
 
         </div>
@@ -173,27 +211,37 @@
                 <h1>
 
         <?php
-            if (!empty($judul1)) {
+
+         if (isset($judul1) && !empty($judul1)) {
             echo $judul1;
             }
+
         ?>
 
         <br>
 
         <?php
-            if (!empty($judul2)) {
+
+            if (isset($judul2) && !empty($judul2)) {
             echo $judul2;
             }
+
         ?>
 
         </h1>
 
+
         <p>
-             <?php
-                 if (!empty($deskripsi)) {
-                echo $deskripsi;
-                 }
-            ?>
+
+         <?php
+
+             if (isset($deskripsi) && !empty($deskripsi)) {
+             echo $deskripsi;
+             } else {
+              echo "Deskripsi belum tersedia.";
+             }
+
+         ?>
         </p>
 
                 <div class="buttons">
@@ -223,59 +271,109 @@
     </section>
 
     <section class="section-card" id="products">
-         <div class="container">
-                 <h2>
-                     Shop Clarity
-                 </h2>
 
-                <p class="subtitle">
-                 We offer supplement for you with very good quality for health
-                </p>
+     <div class="container">
+
+        <h2>
+            Shop Clarity
+        </h2>
+
+        <p class="subtitle">
+            We offer supplement for you with very good quality for health
+        </p>
 
         <div class="card-container">
 
-            <?php for ($i = 1; $i <= $jumlahProduk; $i++) { ?>
+            <?php foreach ($products as $product) { ?>
 
-         <div class="card-item">
+                <?php
 
-        <div class="card1">
 
-            <div class="gambar">
-                <img 
-                    src="image/supplement-1 1.png" 
-                    alt="<?= $product["nama"] ?>">
-            </div>
+                $nama = isset($product["nama"]) && !empty($product["nama"])
+                    ? $product["nama"]
+                    : "Product is Not Available";
 
-            <div class="content">
 
-                <h3>
-                    <?= $product["nama"] ?>
-                </h3>
+                $kapsul = isset($product["kapsul"]) && !empty($product["kapsul"])
+                    ? $product["kapsul"]
+                    : "0 capsules";
 
-                <div class="harga-container">
 
-                    <p class="info-capsul">
-                        <?= $product["kapsul"] ?>
-                    </p>
+                $harga = isset($product["harga"]) && !empty($product["harga"])
+                    ? $product["harga"]
+                    : "---";
 
-                    <p class="info-harga">
-                        <?= $product["harga"] ?>
-                    </p>
-                   
-                </div>
+                $gambar = isset($product["gambar"]) && !empty($product["gambar"])
+                    ? $product["gambar"]
+                    : "image/default.jpg";
 
-            </div>
+                $stok = isset($product["stok"])
+                    ? $product["stok"]
+                    : 0;
 
-            <a href="#" class="beli">
-                Add To Cart
-            </a>
+                ?>
+
+                <div class="card-item">
+
+                    <div class="card1">
+
+                        
+                        <div class="gambar">
+
+                            <img
+                                src="<?php echo $gambar; ?>"
+                                alt="<?php echo $nama; ?>"
+                            >
+
+                        </div>
+
+
+                       
+                        <div class="content">
+
+                            <h3>
+                                <?php echo $nama; ?>
+                            </h3>
+
+
+                            <div class="harga-container">
+
+                                <p class="info-capsul">
+                                    <?php echo $kapsul; ?>
+                                </p>
+                             
+                                <p class="info-harga">
+                                    <?php echo $harga; ?>
+                                </p>
+
+                            </div>
+
+                        </div>
+                       
+                        <?php if ($stok < 1) { ?>
+
+                            <a href="#" class="beli">
+                                Out of Stock
+                            </a>
+
+                        <?php } else { ?>
+
+                            <a href="#" class="beli">
+                                Add To Cart
+                            </a>
+
+                        <?php } ?>
+
+                        </div>
+
+                   </div>
+
+             <?php } ?>
+
+          </div>
 
         </div>
 
-         </div>
-        <?php } ?>
-        </div>
-        </div>
     </section>
 
     <section class="target">
@@ -288,36 +386,35 @@
 
         </div>
 
-     <div class="target-container">
+         <div class="target-container">
 
          <?php if (!empty($targets)): ?>
 
-             <?php foreach ($targets as $target): ?>
+        <?php foreach ($targets as $target): ?>
 
-                 <div class="box <?php echo $target["class"]; ?>">
+            <div class="box <?php echo $target["class"]; ?>">
 
-                    <div class="overlay">
+                <div class="overlay">
 
-                     <h3>
-                           <?php echo $target["nama"]; ?>
+                    <h3>
+                        <?php echo $target["nama"]; ?>
                      </h3>
 
                      <p>
-                            <?php echo $target["deskripsi"]; ?>
-                     </p>
+                       <?php echo $target["deskripsi"]; ?>
+                    </p>
 
-                     <a href="#">
-                         Shop Product
-                      </a>
-
-                    </div>
+                    <a href="#">
+                        Shop Product
+                    </a>
 
                 </div>
 
-             <?php endforeach; ?>
+            </div>
+
+        <?php endforeach; ?>
 
         <?php endif; ?>
-
         </div>
 
     </section>
@@ -338,38 +435,63 @@
 
         <div class="card-container">
 
-           <?php if (!empty($chooses)): ?>
+           <?php if (isset($chooses) && !empty($chooses)): ?>
 
-         <?php foreach ($chooses as $choose): ?>
+        <?php foreach ($chooses as $choose): ?>
 
-             <div class="card-item">
+            <?php
 
-                    <div class="card">
+            $chooseGambar = isset($choose["gambar"]) && !empty($choose["gambar"])
+                ? $choose["gambar"]
+                : "logo/default.png";
 
-                     <div class="icon">
 
-                         <img
-                                src="<?php echo $choose["gambar"]; ?>"
-                                alt="<?php echo $choose["judul"]; ?>"
-                          >
+            $chooseJudul = isset($choose["judul"]) && !empty($choose["judul"])
+                ? $choose["judul"]
+                : "Title Not Yet Available";
 
-                         </div>
 
-                         <h4 class="mif">
-                         <?php echo $choose["judul"]; ?>
-                        </h4>
+            $chooseDeskripsi = isset($choose["deskripsi"]) && !empty($choose["deskripsi"])
+                ? $choose["deskripsi"]
+                : "Deskripsi belum tersedia.";
+
+            ?>
+
+            <div class="card-item">
+
+                <div class="card">
+
+                    <div class="icon">
+
+                        <img
+                            src="<?php echo $chooseGambar; ?>"
+                            alt="<?php echo $chooseJudul; ?>"
+                        >
+
+                    </div>
+
+                    <h4 class="mif">
+                        <?php echo $chooseJudul; ?>
+                    </h4>
 
                         <p>
-                          <?php echo $choose["deskripsi"]; ?>
+                            <?php echo $chooseDeskripsi; ?>
                         </p>
 
-                 </div>
+                    </div>
 
-             </div>
+                </div>
 
          <?php endforeach; ?>
 
-     <?php endif; ?>
+        <?php else: ?>
+
+            <p>
+                Informasi belum tersedia.
+            </p>
+
+        <?php endif; ?>
+
         </div>
 
         </div>
@@ -414,41 +536,41 @@
 
             <div class="profile-text">
 
-                <?php if ($namaTestimonial != ""): ?>
+               <?php if (isset($namaTestimonial) && !empty($namaTestimonial)): ?>
 
-                    <h4>
+         <h4>
+         <?php echo $namaTestimonial; ?>
+        </h4>
 
-                        <?php echo $namaTestimonial; ?>
+        <?php else: ?>
 
-                    </h4>
+        <h4>
+            Anonymous
+        </h4>
 
-                <?php else: ?>
+        <?php endif; ?>
+        <span>
 
-                    <h4>
+         <?php
 
-                        Anonymous
+             if (isset($lokasiTestimonial) && !empty($lokasiTestimonial)) {
+             echo $lokasiTestimonial;
+             } else {
+             echo "Location unknown";
+             }
 
-                    </h4>
+            ?>
 
-                <?php endif; ?>
+        </span>
+              </div>
 
-                    <span>
-
-                      <?php echo $lokasiTestimonial; ?>
-
-                    </span>
-
-             </div>
+            </div>
 
          </div>
 
-     </div>
-
     </section>
 
-    <section
-        class="newsletter"
-        id="contact">
+    <section class="newsletter" id="contact">
 
         <div class="newsletter-overlay"></div>
 
@@ -494,8 +616,8 @@
 
     </section>
 
-   <footer class="footer">
-    <div class="container">
+    <footer class="footer">
+        <div class="container">
 
         <div class="footer-container">
 
@@ -512,39 +634,75 @@
             </div>
 
             <div class="footer-column">
-                <h4><?php echo $judulInformation; ?></h4>
+                <h4>
+             <?php
+                 echo isset($judulInformation) && !empty($judulInformation)
+                 ? $judulInformation
+                 : "Information";
+            ?>
+        </h4>
 
-                <a href="#chooses">
-                    <?php echo $aboutUs; ?>
-                </a>
+        <a href="#chooses"> 
+          <?php
+               echo isset($aboutUs) && !empty($aboutUs)
+               ? $aboutUs
+               : "About Us";
+         ?>
+        </a>
 
-                <a href="#products">
-                    <?php echo $ourProduct; ?>
-                </a>
+        <a href="#products">
+        <?php
+             echo isset($ourProduct) && !empty($ourProduct)
+              ? $ourProduct
+              : "Our Product";
+         ?>
+            </a>
 
-                <a href="#contact">
-                    <?php echo $contactUs; ?>
-                </a>
+            <a href="#contact">
+            <?php
+                 echo isset($contactUs) && !empty($contactUs)
+                 ? $contactUs
+                 : "Contact Us";
+             ?>
+
+            </a>
             </div>
 
             <div class="footer-column">
-                <h4><?php echo $judulHelpCenter; ?></h4>
+               <h4>
 
-                <a href="#">
-                    <?php echo $privacyPolicy; ?>
+        <?php
+             echo isset($judulHelpCenter) && !empty($judulHelpCenter)
+                ? $judulHelpCenter
+               : "Help Center";
+         ?>
+
+            </h4>
+            <a href="#">
+             <?php
+                 echo isset($privacyPolicy) && !empty($privacyPolicy)
+                 ? $privacyPolicy
+                 : "Privacy Policy";
+              ?>
                 </a>
 
-                <a href="#">
-                    <?php echo $terms; ?>
-                </a>
+            <a href="#">
+             <?php
+                  echo isset($terms) && !empty($terms)
+                 ? $terms
+                : "Terms & Conditions";
+            ?>
+            </a>
 
-                <a href="#">
-                    <?php echo $legalSupport; ?>
-                </a>
+            <a href="#">
+              <?php
+                  echo isset($legalSupport) && !empty($legalSupport)
+                 ? $legalSupport
+                 : "Legal Support";
+             ?>
+            </a>
             </div>
-
             <div class="footer-contact">
-
                 <div class="contact-item">
                     <span>
                         <img
@@ -552,17 +710,25 @@
                             src="logo/teleponlogo.svg">
                     </span>
 
-                    <p class="teleponlogo">
-                        <?php echo $nomorTelepon; ?>
+                   <p class="teleponlogo">
+                        <?php
+                            echo isset($nomorTelepon) && !empty($nomorTelepon)
+                            ? $nomorTelepon
+                            : "Nomor Is Not Available";
+                        ?>
                     </p>
                 </div>
 
                 <div class="contact-item">
                     <span class="lock-email">✉</span>
 
-                    <p>
-                        <?php echo $email; ?>
-                    </p>
+                        <p>
+                            <?php
+                                echo isset($email) && !empty($email)
+                                ? $email
+                                : "Email Is Not Available";
+                            ?>
+                        </p>
                 </div>
 
                 <div class="social-media">
@@ -593,12 +759,14 @@
 
         <div class="copyright">
             <p>
-                <?php echo $copyright; ?>
-            </p>
+                <?php
+                     echo isset($copyright) && !empty($copyright)
+                     ? $copyright
+                     : "Copyright Clarity";
+                 ?>
+                 </p>
         </div>
-
-    </div>
-</footer>
+    </footer>
 
     <script src="script.js"></script>
 
