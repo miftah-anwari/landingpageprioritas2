@@ -1,97 +1,8 @@
 <?php
 
-    $namaWebsite = "Clarity";
-    $judul1 = "Harvesting Goodness";
-    $judul2 = "from Olive Oil";
-    $deskripsi = "Enjoy a healthy life by eating Clarity Supplement that make your life healthier for today and forever.";
-    $menus = array(
-    array(
-        "label" => "ABOUT",
-        "url" => "#chooses"
-    ),
-    array(
-        "label" => "PRODUCT",
-        "url" => "#products"  
-    ),
-     array(
-        "label" => "CONTACT",
-        "url" => "#contact"
-    ),
+include 'conection.php';
+include 'config.php';
 
-    );
-   $products = array(
-
-    array(
-        "nama" => "Super Antioxidant",
-        "kapsul" => "60 capsules",
-        "harga" => "$16,00",
-        "gambar" => "image/supplement-1 1.png",
-        "stok" => 10
-    ),
-
-    array(
-         "nama" => "Super Antioxidant",
-        "kapsul" => "60 capsules",
-        "harga" => "$16,00",
-        "gambar" => "image/supplement-1 1.png",
-        "stok" => 10
-    ),
-
-    array(
-        "nama" => "Super Antioxidant",
-        "kapsul" => "60 capsules",
-        "harga" => "$16,00",
-        "gambar" => "image/supplement-1 1.png",
-        "stok" => 10
-    )
-
-    );
-
-    $targets = array(
-    array(
-        "nama" => "Young Active People",
-        "class" => "young",
-        "deskripsi" => "We offer supplement that can give you more energy boost"
-    ),
-    array(
-        "nama" => "Elderly",
-        "class" => "elderly",
-        "deskripsi" => "We offer supplement to keep your body fit and healthy aging"
-    )
-    );
-    $judulChoose = "Why Choose Our Product";
-    $chooses = array(
-    array(
-        "gambar" => "logo/Group.png",
-        "judul" => "Perfect Quality",
-        "deskripsi" => "We grow, farm, and bottle the finest olive products you can find."
-    ),
-    array(
-        "gambar" => "logo/9.svg",
-        "judul" => "Best Price Offers",
-        "deskripsi" => "The price is very affordable among similar products."
-    ),
-    array(
-        "gambar" => "logo/14.svg",
-        "judul" => "100% Natural",
-        "deskripsi" => "Harvested from the finest olive trees that deliver health benefits."
-    )
-    );
-    $namaTestimonial = "Richard Johnson";
-    $lokasiTestimonial = "Bandung, Indonesia";
-    $footerDeskripsi = "Clarity is in the business of improving your health and wellness. We grow, farm, and bottle the finest olive products you can find.";
-
-    $judulInformation = "Information";
-    $aboutUs = "About Us";
-    $ourProduct = "Our Product";
-    $contactUs = "Contact Us";
-    $judulHelpCenter = "Help Center";
-    $privacyPolicy = "Privacy Policy";
-    $terms = "Terms & Conditions";
-    $legalSupport = "Legal Support";
-    $nomorTelepon = "0361 123 4567";
-    $email = "info.clarity@gmail.com";
-    $copyright = "Copyright Clarity 2021 All Right Reserved";
 
 ?>
 
@@ -424,7 +335,7 @@
      <div class="container">
 
         <h1>
-            <?= $judulChoose ?>
+            <?php $judulChoose ?>
         </h1>
 
         <p class="subtitle">
