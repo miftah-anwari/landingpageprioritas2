@@ -11,7 +11,7 @@
     ),
     array(
         "label" => "PRODUCT",
-        "url" => "#products"
+        "url" => "#products"  
     ),
      array(
         "label" => "CONTACT",
@@ -45,7 +45,7 @@
         "stok" => 10
     )
 
-);
+    );
 
     $targets = array(
     array(
