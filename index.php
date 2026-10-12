@@ -5,8 +5,12 @@ include 'config.php';
 
 $result_products = mysqli_query($koneksi, "SELECT * FROM products");
 $products = mysqli_fetch_all($result_products, MYSQLI_ASSOC);
+
 $result_targets = mysqli_query($koneksi, "SELECT * FROM targets");
 $targets = mysqli_fetch_all($result_targets, MYSQLI_ASSOC);
+
+$result_testimonials = mysqli_query($koneksi, "SELECT * FROM testimonialsl");
+$testimonials = mysqli_fetch_all($result_testimonials, MYSQLI_ASSOC);
 
 ?>
 <!DOCTYPE html>
