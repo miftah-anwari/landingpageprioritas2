@@ -9,6 +9,7 @@
     $footerDeskripsi = "Clarity is in the business of improving your health and wellness. We grow, farm, and bottle the finest olive products you can find.";
 
     $judulInformation = "Information";
+    $judulChoose = "Why Choose Our Product";
     $aboutUs = "About Us";
     $ourProduct = "Our Product";
     $contactUs = "Contact Us";
