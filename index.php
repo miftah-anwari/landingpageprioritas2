@@ -6,7 +6,7 @@ include 'config.php';
 $result_products = mysqli_query($koneksi, "SELECT * FROM products");
 $products = mysqli_fetch_all($result_products, MYSQLI_ASSOC);
 $result_targets = mysqli_query($koneksi, "SELECT * FROM targets");
-$products = mysqli_fetch_all($result_targets, MYSQLI_ASSOC);
+
 
 ?>
 <!DOCTYPE html>
