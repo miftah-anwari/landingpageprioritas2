@@ -12,6 +12,9 @@ $targets = mysqli_fetch_all($result_targets, MYSQLI_ASSOC);
 $result_testimonials = mysqli_query($koneksi, "SELECT * FROM testimonials");
 $testimonials = mysqli_fetch_all($result_testimonials, MYSQLI_ASSOC);
 
+$result_menus = mysqli_query($koneksi, "SELECT * FROM menus");
+$menus = mysqli_fetch_all($result_menus, MYSQLI_ASSOC);
+
 $result_chooses = mysqli_query($koneksi, "SELECT * FROM chooses");
 $chooses = mysqli_fetch_all($result_chooses, MYSQLI_ASSOC);
 
