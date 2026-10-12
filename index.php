@@ -3,6 +3,8 @@
 include 'conection.php';
 include 'config.php';
 
+$result_products = mysqli_query($koneksi, "SELECT * FROM products");
+$products = mysqli_fetch_all($result_products, MYSQLI_ASSOC);
 
 ?>
 
