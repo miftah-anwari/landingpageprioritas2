@@ -348,7 +348,7 @@ $chooses = mysqli_fetch_all($result_chooses, MYSQLI_ASSOC);
      <div class="container">
 
         <h1>
-            <?php $judulChoose ?>
+           <?php echo $judulChoose; ?>
         </h1>
 
         <p class="subtitle">
