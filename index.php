@@ -66,19 +66,14 @@ $chooses = mysqli_fetch_all($result_chooses, MYSQLI_ASSOC);
 
             <ul class="menu">
                 <?php if (isset($menus) && !empty($menus)): ?>
-
                      <?php foreach ($menus as $menu): ?>
-
                  <?php
-
              $menuLabel = isset($menu["label"]) && !empty($menu["label"])
                  ? $menu["label"]
                     : "Menu";
-
              $menuUrl = isset($menu["url"]) && !empty($menu["url"])
                  ? $menu["url"]
                  : "#";
-
                 ?>
 
                 <li>
@@ -88,7 +83,6 @@ $chooses = mysqli_fetch_all($result_chooses, MYSQLI_ASSOC);
                 </li>
 
         <?php endforeach; ?>
-
         <?php endif; ?>
             </ul>
 
@@ -139,24 +133,19 @@ $chooses = mysqli_fetch_all($result_chooses, MYSQLI_ASSOC);
          if (isset($judul1) && !empty($judul1)) {
             echo $judul1;
             }
-
         ?>
 
         <br>
-
         <?php
-
             if (isset($judul2) && !empty($judul2)) {
             echo $judul2;
             }
-
         ?>
 
         </h1>
 
 
         <p>
-
          <?php
 
              if (isset($deskripsi) && !empty($deskripsi)) {
@@ -164,38 +153,26 @@ $chooses = mysqli_fetch_all($result_chooses, MYSQLI_ASSOC);
              } else {
               echo "Deskripsi belum tersedia.";
              }
-
          ?>
         </p>
-
                 <div class="buttons">
-
                     <a
                         href="#products"
                         class="btn-dark">
-
                         Shop Now
-
                     </a>
 
                     <a
                         href="#products"
                         class="btn-light">
-
                         View Product
-
                     </a>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
     <section class="section-card" id="products">
-
      <div class="container">
 
         <h2>
@@ -207,21 +184,16 @@ $chooses = mysqli_fetch_all($result_chooses, MYSQLI_ASSOC);
         </p>
 
         <div class="card-container">
-
+            
             <?php foreach ($products as $product) { ?>
-
                 <?php
-
-
                 $nama = isset($product["nama"]) && !empty($product["nama"])
                     ? $product["nama"]
                     : "Product is Not Available";
 
-
                 $kapsul = isset($product["kapsul"]) && !empty($product["kapsul"])
                     ? $product["kapsul"]
                     : "0 capsules";
-
 
                 $harga = isset($product["harga"]) && !empty($product["harga"])
                     ? $product["harga"]
