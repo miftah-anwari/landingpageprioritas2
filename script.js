@@ -21,5 +21,5 @@ document.addEventListener("click", function (event) {
     ) {
         mobileMenu.classList.remove("active");
     }
-
-});
+;
+})
